@@ -55,7 +55,7 @@ Custom post type template includes single and archive page. You can use the meth
 use ODS\Template;
 $template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_post( 'single-book.php', 'book', 'single' );
-$template->add_post( 'single-book.php', 'book', 'archive' );
+$template->add_post( 'archive-book.php', 'book', 'archive' );
 ```
 
 ### Override WordPress template
