@@ -1,4 +1,4 @@
-# WP Templates
+# WP Template
 A simple class that allows registering WordPress any templates from plugins. Including page templates, custom post type templates and WooCommerce templates
 
 ## Installation
