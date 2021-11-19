@@ -10,7 +10,6 @@
             "homepage": "https://oberonlai.blog"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": ">=7.2"
     },
