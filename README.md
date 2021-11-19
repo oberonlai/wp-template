@@ -1,9 +1,9 @@
 # PageTemplates
-A simple class that allows registering WordPress any templates from plugins. Include page templates, custom post type templates and WooCommerce templates
+A simple class that allows registering WordPress any templates from plugins. Including page templates, custom post type templates and WooCommerce templates
 
 ## Installation
 ```
-composer require oberonlai/wp-template-loader
+$ composer require oberonlai/wp-template
 ```
 
 ## Usage
@@ -11,8 +11,8 @@ composer require oberonlai/wp-template-loader
 First, initialize the class with the plugin's directory path and template folder. For example, if you place the template files in a folder which name is 'templates', you can assing the path.
 
 ```php
-use ODS\TemplateLoader;
-$template = new TemplateLoader( plugin_dir_path( __FILE__ ) . 'templates/' );
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 ```
 
 Don't forget the last slash in folder path.
@@ -25,8 +25,8 @@ Page template is the template can be used repeatedly in page editor. You can use
 - $name - Human-readable template name
 
 ```php
-use ODS\TemplateLoader;
-$template = new TemplateLoader( plugin_dir_path( __FILE__ ) . 'templates/' );
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_page( 'template-demo.php', 'my-template' );
 ```
 
@@ -38,8 +38,8 @@ Page slug template is the template for same slug name. You can use the ```page-d
 - $slug For matched page slug
 
 ```php
-use ODS\TemplateLoader;
-$template = new TemplateLoader( plugin_dir_path( __FILE__ ) . 'templates/' );
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_page_slug( 'page-test.php', 'test' );
 ```
 
@@ -52,8 +52,8 @@ Custom post type template includes single and archive page. You use the method `
 - $position Template position optional single, archive
 
 ```php
-use ODS\TemplateLoader;
-$template = new TemplateLoader( plugin_dir_path( __FILE__ ) . 'templates/' );
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_post( 'single-book.php', 'book', 'single' );
 $template->add_post( 'single-book.php', 'book', 'archive' );
 ```
@@ -70,8 +70,8 @@ You use the method ```add_wp()``` to assign template file. There are three argum
 - $position Template position
 
 ```php
-use ODS\TemplateLoader;
-$template = new TemplateLoader( plugin_dir_path( __FILE__ ) . 'templates/' );
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_wp( 'author.php', 'author' );
 $template->add_wp( '404.php', '404' );
 ```
