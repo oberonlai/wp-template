@@ -1,4 +1,4 @@
-# WP Template
+# PageTemplates
 A simple class that allows registering WordPress any templates from plugins. Including page templates, custom post type templates and WooCommerce templates
 
 ## Installation
@@ -45,7 +45,7 @@ $template->add_page_slug( 'page-test.php', 'test' );
 
 ### Add custom post type template
 
-Custom post type template includes single and archive page. You use the method ```add_post()``` to assign template file. There are three arguments :
+Custom post type template includes single and archive page. You can use the method ```add_post()``` to assign template file. There are three arguments :
 
 - $file The page template file name
 - $type Custom post type name
@@ -64,7 +64,7 @@ WordPress template includes serveral filters to override.
 
 https://developer.wordpress.org/reference/hooks/type_template/
 
-You use the method ```add_wp()``` to assign template file. There are three arguments:
+You can use the method ```add_wp()``` to assign template file. There are three arguments:
 
 - $file The page template file name
 - $position Template position
@@ -74,6 +74,20 @@ use ODS\Template;
 $template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
 $template->add_wp( 'author.php', 'author' );
 $template->add_wp( '404.php', '404' );
+```
+
+### Override WooCommerce template
+
+WooCommerce template has its own hierarchy. All you need to do is copy the WooCommerce template file you need to the template folder in your plugin.
+
+You can use the method ```add_woocommerce()``` to change the default template path of WooCommerce. It will get the original template file if your plugin doesn't have the same name with WooCommerce template in templates/woocommerce path.
+
+For example, if you have ```form-checkout.php``` file in ```yourplugin/templates/woocommerce/checkout```, wp-template will replace it.
+
+```php
+use ODS\Template;
+$template = new Template( plugin_dir_path( __FILE__ ) . 'templates/' );
+$template->add_woocommerce();
 ```
 
 ## Credits
