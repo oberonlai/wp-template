@@ -50,9 +50,12 @@ class Template {
 	public function add_page_slug( $file, $slug ) {
 		add_action(
 			'page_template',
-			function() use ( $file, $slug ) {
+			function( $template ) use ( $file, $slug ) {
 				if ( is_page( $slug ) ) {
-					return $this->path . $file;
+					$template = $this->path . $file;
+					return $template;
+				} else {
+					return $template;
 				}
 			},
 			99,
@@ -70,11 +73,13 @@ class Template {
 	public function add_post( $file, $type, $position ) {
 		add_action(
 			$position . '_template',
-			function() use ( $file, $type, $position ) {
+			function( $template ) use ( $file, $type, $position ) {
 				if ( 'single' === $position && is_singular( $type ) ) {
 					return $this->path . $file;
 				} elseif ( 'archive' === $position && is_post_type_archive( $type ) ) {
 					return $this->path . $file;
+				} else {
+					return $template;
 				}
 			},
 			99,
@@ -93,9 +98,11 @@ class Template {
 	public function add_term( $file, $taxonomy, $position ) {
 		add_action(
 			'taxonomy_template',
-			function() use ( $file, $taxonomy, $position ) {
+			function( $template ) use ( $file, $taxonomy, $position ) {
 				if ( is_tax( $taxonomy ) ) {
 					return $this->path . $file;
+				} else {
+					return $template;
 				}
 			},
 			99,
