@@ -126,7 +126,7 @@ class Template {
 	 * Assign the path of WooCommerce template path.
 	 */
 	public function add_woocommerce() {
-		add_filter( 'wc_get_template', array( $this, 'intercept_wc_template' ), 99, 3 );
+		add_filter( 'woocommerce_locate_template', array( $this, 'intercept_wc_template' ), 99, 3 );
 	}
 
 	public function intercept_wc_template( $template, $template_name, $template_path ) {
